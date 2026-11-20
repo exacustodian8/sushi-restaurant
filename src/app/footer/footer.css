@@ -1,0 +1,16 @@
+.foot { background: var(--dark); padding: 3.2rem 0 2rem; }
+.foot__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+.foot__name { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.05em; }
+.foot__name span { margin-left: 0.6rem; font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; opacity: 0.6; }
+.foot__small { margin-top: 0.4rem; font-size: 0.85rem; color: rgba(244, 238, 226, 0.62); max-width: 52ch; }
+.foot__right { text-align: right; }
+.foot__right a { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; }
+.foot__right a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.credits { width: min(100% - 2.5rem, var(--container)); margin: 2rem auto 0; padding-top: 1.2rem; border-top: 1px solid var(--line-on-dark); font-size: 0.78rem; color: rgba(244, 238, 226, 0.55); }
+.credits summary { cursor: pointer; width: fit-content; }
+.credits ul { margin-top: 0.7rem; display: grid; gap: 0.2rem; }
+
+@media (max-width: 640px) { .foot__right { text-align: left; } }
+.credits a { text-underline-offset: 3px; }
+.credits a:hover { color: var(--on-dark); }

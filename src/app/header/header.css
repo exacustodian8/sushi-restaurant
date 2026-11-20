@@ -1,0 +1,51 @@
+.bar {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  height: var(--header-h);
+  display: flex; align-items: center;
+  color: var(--on-dark);
+  transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+}
+.bar.is-solid { background: rgba(53, 41, 31, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line-on-dark); }
+
+.bar__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.brand__mark { width: 34px; height: 34px; color: #D9A58F; }
+.brand__name { font-family: var(--font-display); font-size: 1.55rem; letter-spacing: 0.06em; }
+.brand__sub { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.7; padding-top: 0.35rem; }
+
+.nav { display: flex; align-items: center; gap: 2rem; }
+.nav a:not(.btn) {
+  position: relative; text-decoration: none;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.4rem 0; opacity: 0.85; transition: opacity 0.2s;
+}
+.nav a:not(.btn)::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.nav a:not(.btn):hover, .nav a.is-active { opacity: 1; }
+.nav a:not(.btn):hover::after, .nav a.is-active::after { transform: scaleX(1); }
+.nav__cta { padding: 0.7em 1.4em; margin-left: 0.5rem; }
+
+.burger { display: none; width: 44px; height: 44px; background: none; border: 0; color: inherit; cursor: pointer; position: relative; }
+.burger span { position: absolute; left: 10px; right: 10px; height: 2px; background: currentColor; transition: transform 0.3s, top 0.3s; }
+.burger span:nth-child(1) { top: 17px; }
+.burger span:nth-child(2) { top: 26px; }
+.burger[aria-expanded='true'] span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.burger[aria-expanded='true'] span:nth-child(2) { top: 21px; transform: rotate(-45deg); }
+
+@media (max-width: 920px) {
+  .burger { display: block; }
+  .brand__sub { display: none; }
+  .nav {
+    position: fixed; inset: var(--header-h) 0 auto 0;
+    flex-direction: column; align-items: flex-start; gap: 0;
+    padding: 0.8rem 1.5rem 1.8rem;
+    background: var(--dark);
+    border-top: 1px solid var(--line-on-dark);
+    clip-path: inset(0 0 100% 0); visibility: hidden;
+    transition: clip-path 0.4s ease, visibility 0.4s;
+  }
+  .nav.is-open { clip-path: inset(0); visibility: visible; }
+  .nav a:not(.btn) { width: 100%; padding: 1rem 0; border-bottom: 1px solid var(--line-on-dark); font-size: 0.9rem; }
+  .nav a:not(.btn)::after { display: none; }
+  .nav__cta { margin: 1.2rem 0 0; }
+}

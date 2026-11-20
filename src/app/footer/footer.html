@@ -1,0 +1,22 @@
+<footer class="foot on-dark">
+  <div class="container foot__inner">
+    <div>
+      <p class="foot__name">{{ restaurant.name }} <span>{{ restaurant.descriptor }}</span></p>
+      <p class="foot__small">{{ restaurant.address.street }}, {{ restaurant.address.city }} &middot; {{ restaurant.phone }}</p>
+      <p class="foot__small">{{ restaurant.instagram }}</p>
+    </div>
+    <div class="foot__right">
+      <a href="#top">Back to top &uarr;</a>
+      <p class="foot__small">&copy; {{ year }} {{ restaurant.name }}. A fictional restaurant: all names, menus and details are placeholders.</p>
+    </div>
+  </div>
+
+  <details class="credits">
+    <summary>Photo credits</summary>
+    <ul>
+      @for (c of credits; track c.file) {
+        <li><a [href]="c.source" target="_blank" rel="noopener">{{ c.alt }}</a> &middot; {{ c.author }} &middot; {{ c.license }} &middot; via Wikimedia Commons</li>
+      }
+    </ul>
+  </details>
+</footer>

@@ -1,0 +1,2 @@
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: 0.7rem 1.1rem; background: var(--accent); color: var(--on-accent); border-radius: var(--radius); transition: top 0.2s; }
+.skip:focus { top: 1rem; }

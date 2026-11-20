@@ -1,0 +1,50 @@
+<section class="section section--dark menu on-dark" id="menu" appSpy="menu">
+  <div class="menu__bg waves" aria-hidden="true"></div>
+  <div class="container menu__wrap">
+    <header class="menu__head">
+      <div>
+        <p class="eyebrow" appReveal>The menu</p>
+        <h2 appReveal [revealDelay]="80">Short on purpose.</h2>
+      </div>
+      <p class="lede" appReveal [revealDelay]="160">Ten dishes, changed with the market. Ask the counter what has just arrived.</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Menu categories" appReveal [revealDelay]="200">
+      @for (f of filters; track f) {
+        <button type="button" role="tab" [id]="'tab-' + f" [attr.aria-selected]="selected() === f" [attr.aria-controls]="'menu-panel'"
+                [class.is-active]="selected() === f" (click)="selected.set(f)">
+          {{ f }}<sup>{{ count(f) }}</sup>
+        </button>
+      }
+    </div>
+
+    <div class="panel" id="menu-panel" role="tabpanel" [attr.aria-labelledby]="'tab-' + selected()">
+      @for (g of groups(); track g.name) {
+        <section class="group" [attr.aria-label]="g.name">
+          <h3>{{ g.name }}</h3>
+          <ul>
+            @for (item of g.items; track item.name) {
+              <li class="dish">
+                <div class="dish__line">
+                  <span class="dish__name">{{ item.name }}</span>
+                  <span class="dish__dots" aria-hidden="true"></span>
+                  <span class="dish__price">{{ price(item) }}</span>
+                </div>
+                <p class="dish__desc">{{ item.description }}</p>
+                @if (item.tags.length) {
+                  <p class="dish__tags">
+                    @for (t of item.tags; track t) {
+                      <span class="tag" [attr.data-tag]="t">{{ tagLabel(t) }}</span>
+                    }
+                  </p>
+                }
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+
+    <p class="menu__note">Prices in euro, VAT included. Please tell us about any allergies before ordering. Placeholder menu.</p>
+  </div>
+</section>

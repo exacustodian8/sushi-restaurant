@@ -1,0 +1,31 @@
+<section class="section about" id="about" appSpy="about">
+  <div class="container about__grid">
+    <figure class="about__photo" appReveal>
+      <img [src]="photo.file" [alt]="photo.alt" loading="lazy" width="1400" height="930">
+      <figcaption class="seal" aria-hidden="true">
+        <span>Est.</span><b>{{ restaurant.established }}</b>
+      </figcaption>
+    </figure>
+
+    <div class="about__text">
+      <p class="eyebrow" appReveal>Our story</p>
+      <h2 appReveal [revealDelay]="80">A small counter with a long attention span.</h2>
+      <p class="lede" appReveal [revealDelay]="160">
+        {{ restaurant.name }} began as a quiet idea: a place where you sit close to the chef, watch every piece being made and eat it the second it is ready.
+        There is no fixed script and no rush, only good fish, careful rice and a room that lets the food speak.
+      </p>
+
+      <ul class="principles">
+        @for (p of principles; track p.n; let i = $index) {
+          <li appReveal [revealDelay]="240 + i * 110">
+            <span class="principles__n">{{ p.n }}</span>
+            <div>
+              <h3>{{ p.title }}</h3>
+              <p>{{ p.text }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

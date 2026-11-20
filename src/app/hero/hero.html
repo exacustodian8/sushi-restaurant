@@ -1,0 +1,24 @@
+<section class="hero on-dark" id="top">
+  <img class="hero__img" [src]="photo.file" [alt]="photo.alt" fetchpriority="high">
+  <div class="hero__shade"></div>
+
+  <div class="container hero__content">
+    <p class="eyebrow">{{ restaurant.descriptor }} &middot; {{ restaurant.address.city }}</p>
+    <h1>{{ restaurant.tagline }}</h1>
+    <p class="hero__intro">{{ restaurant.intro }}</p>
+    <div class="hero__actions">
+      <a class="btn" href="#reserve">Reserve a table</a>
+      <a class="btn btn--ghost" href="#menu">View the menu</a>
+    </div>
+  </div>
+
+  <div class="hero__strip">
+    <div class="container strip">
+      <span class="status" [class.is-open]="open()">
+        <i aria-hidden="true"></i>{{ open() ? 'Open now' : 'Closed right now' }}
+      </span>
+      <span class="strip__item"><b>Today</b> {{ today() }}</span>
+      <span class="strip__item"><b>Find us</b> {{ restaurant.address.street }}, {{ restaurant.address.city }}</span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<section class="visit" id="visit" appSpy="visit">
+  <div class="section container visit__info">
+    <div class="visit__col" appReveal>
+      <p class="eyebrow">Visit</p>
+      <h2>Find the counter.</h2>
+      <address>
+        {{ restaurant.address.street }}<br>
+        {{ restaurant.address.postalCode }} {{ restaurant.address.city }}<br>
+        {{ restaurant.address.country }}
+      </address>
+      <p class="note">Walk-ins are welcome at the counter when there is a free seat. No step at the entrance.</p>
+      <p class="links">
+        <a class="btn" [href]="directionsUrl" target="_blank" rel="noopener">Get directions</a>
+      </p>
+    </div>
+
+    <div class="visit__col" appReveal [revealDelay]="120">
+      <h3>Opening hours</h3>
+      <table class="hours">
+        <caption class="sr-only">Opening hours by weekday</caption>
+        <tbody>
+          @for (d of week; track d.day) {
+            <tr [class.is-today]="d.day === today()" [class.is-closed]="d.hours === 'Closed'">
+              <th scope="row">{{ d.name }}</th>
+              <td>{{ d.hours }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- THE MAP: the last block of the page content. Pin position comes from restaurant.config.ts -->
+  <div class="map" appReveal>
+    <iframe [src]="mapUrl" title="Map showing the restaurant's location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a class="map__open" [href]="bigMapUrl" target="_blank" rel="noopener">Open larger map</a>
+  </div>
+</section>
